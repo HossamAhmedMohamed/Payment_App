@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_app/core/widgets/custom_button.dart';
 import 'package:payment_app/features/checkout/data/repository/check_out_repo_impl.dart';
-import 'package:payment_app/features/checkout/presentation/cubit/stripe_cubit.dart';
+import 'package:payment_app/features/checkout/presentation/cubit/stripe_cubit/stripe_cubit.dart';
+import 'package:payment_app/features/checkout/presentation/cubit/toggle_payment_cubit/payment_method_cubit.dart';
 import 'package:payment_app/features/checkout/presentation/widgets/order_item_price.dart';
 import 'package:payment_app/features/checkout/presentation/widgets/payment_method_modal_bottom_sheet.dart';
 import 'package:payment_app/features/checkout/presentation/widgets/total_price.dart';
@@ -48,10 +49,13 @@ class MyCartScreenBody extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 context: context,
                 builder: (context) {
-                  return BlocProvider(
-                    create: (context) => StripeCubit(
-                      CheckOutRepoImpl()
-                    ),
+                  return MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) => StripeCubit(CheckOutRepoImpl()),
+                      ),
+                      BlocProvider(create: (context) => PaymentMethodCubit()),
+                    ],
                     child: PaymentMethodBottomSheet(),
                   );
                 },
