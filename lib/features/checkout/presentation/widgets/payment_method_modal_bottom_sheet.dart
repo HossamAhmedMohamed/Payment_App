@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_app/features/checkout/presentation/widgets/custom_button_bloc_consumer.dart';
+import 'package:payment_app/features/checkout/presentation/widgets/custom_button_toggle_payment_method.dart';
 import 'package:payment_app/features/checkout/presentation/widgets/payment_method_list_view.dart';
 
 class PaymentMethodBottomSheet extends StatelessWidget {
@@ -13,13 +13,10 @@ class PaymentMethodBottomSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           PaymentMethodListView(),
-      
+
           const SizedBox(height: 32),
-      
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: CustomButtonBlocConsumer(),
-          )
+
+          CustomButtonTogglePaymentMethod(),
         ],
       ),
     );
