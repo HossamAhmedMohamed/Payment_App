@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_app/core/errors/failure.dart';
-import 'package:payment_app/core/utils/stripe_service.dart';
+import 'package:payment_app/core/utils/payment_services/stripe_service.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:payment_app/features/checkout/data/repository/check_out_repo.dart';
 
